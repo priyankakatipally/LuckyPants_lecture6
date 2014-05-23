@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://code.jquery.com/jquery-latest.min.js">
+</script>
+<script>
+//we are reusing this URL, somove it to a variable
+base_url="/rest/books/";
+$(document).ready(function(){
+    $.getJSON(base_url,function(data){
+    	console.log(data);
+    	$.each( data, function( count, object ) { 
+    		if(object.isbn != undefined) {//make sure isbn is valid
+    			//build the URL for the book
+    			$("div.books_list").append( "<br/><a href='"+base_url+object.isbn+"'>"+ object.title+"</a>"  );
+    		}
+    	});
+    });
+});
+</script>
+</head>
+<body>
+<h1 style="text-align:center;">Lucky Pants Books</h1>
+<div class="books_list"></div>
+</body>
+</html>

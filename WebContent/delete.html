@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://code.jquery.com/jquery-latest.min.js">
+</script>
+<script>
+//we are reusing this URL, somove it to a variable
+base_url="/rest/books/";
+meta_url="/rest/metadata/";
+$(document).ready(function(){
+
+    $('#book_form').submit(function(){
+    	console.log($('.isbn').val());
+    	deleteData($('.isbn').val());
+    	return false;
+    });
+    function deleteData(isbn){
+        $.ajax({
+                type: "DELETE",
+                url: "/rest/books/"+isbn,
+                success: function (data, status, jqXHR) {
+                    alert("deleted");
+                },
+                error: function (jqXHR, status) {
+                    console.log(jqXHR);
+                    alert('failed, please check console for errors');
+                }
+             });
+       }
+});
+
+</script>
+</head>
+<body>
+<h1 style="text-align:center;">Delete a Book</h1>
+<form id="book_form" method="POST">
+Enter ISBN of the book to be deleted: <input type="text" class="isbn">
+
+<input type="Submit">
+</form>
+</body>
+</html>
