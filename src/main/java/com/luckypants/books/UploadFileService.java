@@ -39,8 +39,7 @@ public class UploadFileService {
 		String uploadedFileLocation) {
  
 		try {
-			OutputStream out = new FileOutputStream(new File(
-					uploadedFileLocation));
+			OutputStream out = new FileOutputStream(new File(uploadedFileLocation));
 			int read = 0;
 			byte[] bytes = new byte[1024];
  

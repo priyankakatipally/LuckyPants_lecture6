@@ -1,4 +1,6 @@
 package com.luckypants.mongo;
+//import java.util.Properties;
+import com.luckypants.properties.*;
 
 import java.net.UnknownHostException;
 
@@ -15,8 +17,13 @@ public class BooksConnectionProvider {
 
 	public DBCollection getCollection() {
 		try {
+			PropertiesLookup pl = new PropertiesLookup();
+			String mongoUrl = pl.getProperty("mongodbURL");
+			String mongoDbPort = pl.getProperty("mongodbPORT");
 
-			MongoClient mongo = new MongoClient("oceanic.mongohq.com", 10010);
+			MongoClient mongo = new MongoClient(mongoUrl,Integer.parseInt(mongoDbPort));
+
+			//MongoClient mongo = new MongoClient("oceanic.mongohq.com", 10010);
 
 			DB db = mongo.getDB("luckypants1");
 			if (db == null) {

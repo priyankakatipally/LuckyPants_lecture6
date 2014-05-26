@@ -19,7 +19,7 @@ public class FileTest {
 	}
 	
 	public static void main(String[] args){
-		File folder = new File("/Users/priyanka/Desktop/test files");
+		File folder = new File("c:/Users/priyanka/Desktop/test files");
 		listFiles(folder);
 		folder = new File(".");
 		System.out.println(folder.getAbsolutePath());
